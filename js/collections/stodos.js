@@ -1,4 +1,4 @@
-var app = app || {}
+var app = app || {};
 
 var StodoList = Backbone.Collection.extend({
   model: app.Stodo,
