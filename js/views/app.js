@@ -45,7 +45,7 @@ app.AppView = Backbone.View.extend({
 
       this.$('#filters li a')
       .removeClass('selected')
-      .filter('[href="#/' + ( app.TodoFilter || '' ) + '"]')
+      .filter('[href="#/' + ( app.StodoFilter || '' ) + '"]')
       .addClass('selected');
     } else {
       this.$main.hide();
@@ -56,7 +56,7 @@ app.AppView = Backbone.View.extend({
   },
 
   // Append new list view items on fired of the add event
-  addOne: function(){
+  addOne: function(stodo){
     var view = new app.StodoView({model: stodo});
     $('#todo-list').append( view.render().el );
   },
@@ -100,8 +100,8 @@ app.AppView = Backbone.View.extend({
   toggleAllComplete: function() {
     var completed = this.allCheckbox.checked;
 
-    app.Stodos.each(function(todo){
-      todo.save({
+    app.Stodos.each(function(stodo){
+      stodo.save({
         'completed': completed
       });
     });
